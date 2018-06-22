@@ -35,7 +35,7 @@ public class EggMovement : MonoBehaviour
 
     private string[] keywords = { "よしよし", "もしもし", "卵を探せ", "どこ" };
 
-    private KeywordRecognizer m_Recognizer;
+    // private KeywordRecognizer m_Recognizer;
 
     // Use this for initialization
     public void ProcessInput()
@@ -67,43 +67,43 @@ public class EggMovement : MonoBehaviour
     {
         initialPosition = transform.localPosition;
 
-        m_Recognizer = new KeywordRecognizer(keywords);
-        m_Recognizer.OnPhraseRecognized += OnPhraseRecognized;
-        m_Recognizer.Start();
+        // m_Recognizer = new KeywordRecognizer(keywords);
+        // m_Recognizer.OnPhraseRecognized += OnPhraseRecognized;
+        // m_Recognizer.Start();
     }
 
-    void OnPhraseRecognized(PhraseRecognizedEventArgs args)
-    {
-        StringBuilder builder = new StringBuilder();
-        builder.AppendFormat("{0} ({1}){2}", args.text, args.confidence, Environment.NewLine);
-        builder.AppendFormat("\tTimestamp: {0}{1}", args.phraseStartTime, Environment.NewLine);
-        builder.AppendFormat("\tDuration: {0} seconds {1}", args.phraseDuration.TotalSeconds, Environment.NewLine);
-        Debug.Log(builder.ToString());
+    // void OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    // {
+    //     StringBuilder builder = new StringBuilder();
+    //     builder.AppendFormat("{0} ({1}){2}", args.text, args.confidence, Environment.NewLine);
+    //     builder.AppendFormat("\tTimestamp: {0}{1}", args.phraseStartTime, Environment.NewLine);
+    //     builder.AppendFormat("\tDuration: {0} seconds {1}", args.phraseDuration.TotalSeconds, Environment.NewLine);
+    //     Debug.Log(builder.ToString());
 
-        switch (args.text)
-        {
-            case "よしよし":
-                Debug.Log(args.text);
-                eggParameter.AddParameter(10, 0, 0);
-                break;
-            case "もしもし":
-                Debug.Log(args.text);
-                eggParameter.AddParameter(10, 0, 0);
-                break;
-            case "卵を探せ":
-                Debug.Log(args.text);
-                eggParameter.AddParameter(10, 0, 0);
-                break;
-            case "どこ":
-                Debug.Log(args.text);
-                eggParameter.AddParameter(10, 0, 0);
-                break;
-            default:
-                break;
-        }
-        UpdateParameterText();
+    //     switch (args.text)
+    //     {
+    //         case "よしよし":
+    //             Debug.Log(args.text);
+    //             eggParameter.AddParameter(10, 0, 0);
+    //             break;
+    //         case "もしもし":
+    //             Debug.Log(args.text);
+    //             eggParameter.AddParameter(10, 0, 0);
+    //             break;
+    //         case "卵を探せ":
+    //             Debug.Log(args.text);
+    //             eggParameter.AddParameter(10, 0, 0);
+    //             break;
+    //         case "どこ":
+    //             Debug.Log(args.text);
+    //             eggParameter.AddParameter(10, 0, 0);
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    //     UpdateParameterText();
 
-    }
+    // }
 
     void RestartEgg()
     {
