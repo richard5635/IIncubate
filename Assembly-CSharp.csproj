@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AudioHandler.cs" />
+     <Compile Include="Assets\AudioVisualizer01_Reshape.cs" />
      <Compile Include="Assets\cameraAlignment.cs" />
      <Compile Include="Assets\DisplayValue.cs" />
      <Compile Include="Assets\EggMovement.cs" />
@@ -70,12 +71,18 @@
      <Compile Include="Assets\OpenCVFaceDetection.cs" />
      <Compile Include="Assets\PID.cs" />
      <Compile Include="Assets\RaycastExample.cs" />
+     <Compile Include="Assets\Scripts\AudioPeer.cs" />
+     <Compile Include="Assets\Scripts\MicInput.cs" />
+     <Compile Include="Assets\Scripts\MicrophoneHandler.cs" />
      <None Include="Assets\JStoC\readme.txt" />
- <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>/Users/richardsahala/GitHub/IIncubate/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <Reference Include="Unity.ProBuilder.AddOns.Editor">
+ <HintPath>/Users/richardsahala/GitHub/IIncubate/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/Users/richardsahala/GitHub/IIncubate/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.PackageManagerUI.Editor">
+ <HintPath>/Users/richardsahala/GitHub/IIncubate/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -274,6 +281,21 @@
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Users/richardsahala/Library/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="ProBuilderCore">
+ <HintPath>/Users/richardsahala/Library/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ProBuilderCore.dll</HintPath>
+ </Reference>
+ <Reference Include="ProBuilderMeshOps">
+ <HintPath>/Users/richardsahala/Library/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ProBuilderMeshOps.dll</HintPath>
+ </Reference>
+ <Reference Include="KdTreeLib">
+ <HintPath>/Users/richardsahala/Library/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
+ </Reference>
+ <Reference Include="pb_Stl">
+ <HintPath>/Users/richardsahala/Library/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
+ </Reference>
+ <Reference Include="Poly2Tri">
+ <HintPath>/Users/richardsahala/Library/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Purchasing">
  <HintPath>/Users/richardsahala/Library/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>

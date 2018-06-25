@@ -25,6 +25,12 @@ public class GameController : MonoBehaviour
 		rg = Egg.GetComponent<Rigidbody>();
 		//StartCoroutine(ReproduceEgg());
     }
+
+    void Start()
+    {
+        StartCoroutine(CountDown());
+        eggParameter.isNew = false;
+    }
     public IEnumerator CountDown()
     {
 		if(eggParameter.isNew)cStarted = false;
@@ -76,17 +82,19 @@ public class GameController : MonoBehaviour
 		while(elapsedTime < duration)
 		{
 			Debug.Log(elapsedTime);
-			Lid.transform.localPosition = Vector3.Lerp(Vector3.zero, new Vector3(0, 0, -1), elapsedTime/duration);
+			Lid.transform.localPosition = Vector3.Lerp(Vector3.zero, new Vector3(0, 0, -0.4f), elapsedTime/duration);
 			elapsedTime += Time.deltaTime;
 			yield return null;
 			
 		}
 		yield return new WaitForSeconds(1);
 		Debug.Log("Dropping New Egg!");
-		Egg.transform.position = new Vector3(0, 3, 0);
-		Egg.transform.Find("clean").GetComponent<MeshRenderer>().enabled = true;
+		Egg.transform.position = new Vector3(0, 0, 0.5f);
+		eggMovement.ShowCleanEgg();
 		eggParameter.Initialize();
 		rg.isKinematic = false;
+        eggParameter.isNew = true;
+        StartCoroutine(CountDown());
 		yield return null;
 	}
 }

@@ -24,6 +24,7 @@ public class EggMovement : MonoBehaviour
     [HideInInspector] public Vector3 touchPosition;
     private Transform initialTransform;
     [HideInInspector] public int touchCount = 0;
+    GameObject eggShattered;
 
     EggParameter eggParameter;
     EggPhysicalAI eggPhysicalAI;
@@ -195,6 +196,22 @@ public class EggMovement : MonoBehaviour
         StartCoroutine(Hatch(true));
     }
 
+    public void HideCleanEgg()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        gameObject.GetComponents<SphereCollider>()[0].enabled = false;
+        gameObject.GetComponents<SphereCollider>()[1].enabled = false;
+    }
+
+    public void ShowCleanEgg()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        gameObject.GetComponent<CapsuleCollider>().enabled = true;
+        gameObject.GetComponents<SphereCollider>()[0].enabled = true;
+        gameObject.GetComponents<SphereCollider>()[1].enabled = true;
+    }
+
     IEnumerator Hatch(bool good)
     {
         Vector3 initPos = tf.position;
@@ -203,13 +220,15 @@ public class EggMovement : MonoBehaviour
         float elapsedTime = 0;
         while(elapsedTime < duration)
         {
-            rg.position = Vector3.Lerp(initPos, new Vector3(0, 1.0f, 0), elapsedTime/duration);
+            tf.position = Vector3.Lerp(initPos, new Vector3(0, 0, 0.5f), elapsedTime/duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
         yield return new WaitForSeconds(2);
-        Instantiate(EggShattered, transform.position, transform.rotation, transform.parent);
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        eggShattered = Instantiate(EggShattered, transform.position, transform.rotation, transform.parent);
+        HideCleanEgg();
+        
+        
         if(good)
         {
 
@@ -219,6 +238,7 @@ public class EggMovement : MonoBehaviour
 
         }
         yield return new WaitForSeconds(2);
+        eggShattered.transform.parent = GameObject.Find("Shells").transform;
         gameController.ReproduceEgg();
         yield return null;
     }

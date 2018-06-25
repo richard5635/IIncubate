@@ -163,15 +163,15 @@ public class EggPhysicalAI : MonoBehaviour
         float randDist = Random.Range(1.0f, 2.0f);
         if (eggParameter.TotalParameter >= eggParameter.PhaseA && eggParameter.TotalParameter < eggParameter.PhaseB)
         {
-            torque = 40;
+            torque = 4;
         }
         else if (eggParameter.TotalParameter >= eggParameter.PhaseB && eggParameter.TotalParameter < eggParameter.PhaseC)
         {
-            torque = 60;
+            torque = 6;
         }
         else if (eggParameter.TotalParameter >= eggParameter.PhaseC)
         {
-            torque = 80;
+            torque = 8;
         }
         else
         {
@@ -205,7 +205,7 @@ public class EggPhysicalAI : MonoBehaviour
 
     IEnumerator Roll()
     {
-        float torque = 40f;
+        float torque = 4f;
         isBalancing = false;
         Debug.Log("Roll Start");
         rg.AddTorque(torque, 0, 0);
@@ -222,7 +222,7 @@ public class EggPhysicalAI : MonoBehaviour
 
     IEnumerator Jump()
     {
-        float forceJ = 40f;
+        float forceJ = 4f;
         Debug.Log("Jump Start");
         // if (Standing())
         // {
@@ -291,7 +291,7 @@ public class EggPhysicalAI : MonoBehaviour
 		float stHeight = 0.446f;
 		while(elapsedTime < 0.2f)
 		{
-			tf.position = Vector3.Lerp(stPos, new Vector3(stPos.x, 0.5f, stPos.z), (elapsedTime/1) * 10);
+			tf.position = Vector3.Lerp(stPos, new Vector3(stPos.x, stPos.y+0.1f, stPos.z), (elapsedTime/1) * 10);
 			//tf.eulerAngles = Vector3.Lerp(stRot, new Vector3(0, 0, 0), elapsedTime * 3);
 			tf.rotation = Quaternion.Lerp(tf.rotation, Quaternion.LookRotation(Vector3.zero), elapsedTime * 10);
 			elapsedTime += Time.deltaTime;
